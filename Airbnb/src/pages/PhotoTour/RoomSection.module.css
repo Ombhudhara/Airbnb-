@@ -1,0 +1,75 @@
+.section {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 var(--space-24, 24px);
+  padding-bottom: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+  scroll-margin-top: 80px;
+}
+
+.leftCol {
+  width: 38%;
+  flex-shrink: 0;
+  position: sticky;
+  top: 80px; /* offset for desktop header */
+  align-self: flex-start;
+  z-index: 10;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--color-grey-800, #222222);
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.amenities {
+  font-size: 16px;
+  color: var(--text-secondary, #717171);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.rightCol {
+  width: 62%;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+@media (max-width: 1024px) {
+  .section {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .leftCol, .rightCol {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 0 16px;
+    padding-bottom: 32px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .leftCol {
+    top: 56px; /* mobile header height */
+    background-color: var(--color-white, #ffffff);
+    padding: 16px 0; /* extra padding to look good when sticky */
+    margin: -16px 0 16px 0; /* offset the padding visually */
+  }
+}

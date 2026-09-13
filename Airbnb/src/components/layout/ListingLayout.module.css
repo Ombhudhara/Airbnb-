@@ -1,0 +1,30 @@
+.layoutContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Prevent columns from stretching to equal height */
+  gap: 40px;
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-24);
+}
+
+.leftColumn {
+  flex: 1 1 0%;
+  min-width: 0; /* Prevents flex items from overflowing */
+}
+
+.rightColumn {
+  flex: 0 0 360px;
+  max-width: 360px;
+  /* align-self: flex-start is critical — without it the column stretches
+     to match leftColumn height and the sticky child runs out of scroll space */
+  align-self: flex-start;
+  position: sticky;
+  top: 96px; /* sits just below the 80px subnav with 16px breathing room */
+}
+
+.stickySidebar {
+  /* Actual sidebar content wrapper — no extra sticky needed since parent is sticky */
+  width: 100%;
+}

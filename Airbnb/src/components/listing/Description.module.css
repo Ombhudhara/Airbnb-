@@ -1,0 +1,8 @@
+/* =============================================================
+   Description.module.css
+   ============================================================= */
+
+.section {
+  padding: var(--space-32) 0;
+  border-bottom: 1px solid var(--border-default);
+}

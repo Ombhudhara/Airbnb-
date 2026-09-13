@@ -1,0 +1,62 @@
+/* =============================================================
+   Highlights.module.css
+   Three-row highlight list below the Overview block.
+   All values via tokens from src/styles/tokens.css.
+   ============================================================= */
+
+/* ── Section wrapper ──────────────────────────────────────── */
+.highlights {
+  padding: var(--space-32) 0;
+  border-bottom: 1px solid var(--border-default);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);       /* 24px between rows */
+}
+
+/* ── Single highlight row ─────────────────────────────────── */
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-16);
+}
+
+/* ── Icon wrapper ─────────────────────────────────────────── */
+.iconWrap {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  margin-top: 2px;      /* optical alignment with title baseline */
+}
+
+/* ── Text block ───────────────────────────────────────────── */
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+/* Bold title ~16px */
+.title {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);      /* 16px */
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);          /* #222222 — passes 4.5:1 on white */
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Smaller gray description — using --color-grey-600 (#484848)
+   which gives ~7.5:1 contrast on white, well above 4.5:1 WCAG AA */
+.description {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);    /* 14px */
+  font-weight: var(--font-weight-normal);
+  color: var(--color-grey-600);        /* #484848 — 7.5:1 on white ✓ */
+  line-height: 1.5;
+  margin: 0;
+}

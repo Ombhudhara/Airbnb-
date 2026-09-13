@@ -1,0 +1,243 @@
+/* =============================================================
+   Overview.module.css
+   Overview block: h2 title, specs, Guest Favourite box, Host row
+   All values via tokens from src/styles/tokens.css
+   ============================================================= */
+
+/* ── Section wrapper ──────────────────────────────────────── */
+.overview {
+  padding: var(--space-8) 0 var(--space-32);
+  border-bottom: 1px solid var(--border-default);
+}
+
+/* ── Property type heading ────────────────────────────────── */
+.heading {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xl);      /* 22px */
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin: 0 0 var(--space-8);
+  letter-spacing: -0.1px;
+}
+
+/* ── Room/guest specs row ─────────────────────────────────── */
+.specs {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);    /* 14px */
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0 0 var(--space-24);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.specItem {
+  display: inline;
+}
+
+/* "·" bullet between spec items */
+.specItem + .specItem::before {
+  content: ' · ';
+  color: var(--text-secondary);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Guest Favourite box
+   ───────────────────────────────────────────────────────────── */
+.favouriteBox {
+  width: 100%;
+  border: 1px solid var(--border-default);
+  border-radius: var(--border-radius-md);   /* 12px */
+  padding: var(--space-16) var(--space-24);
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  margin-bottom: var(--space-24);
+  box-sizing: border-box;
+}
+
+/* ── Left section: laurel + rating ───────────────────────── */
+.ratingSection {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  flex-shrink: 0;
+}
+
+.laurelWrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.laurelIcon {
+  display: flex;
+  align-items: center;
+  color: var(--color-brand);
+  flex-shrink: 0;
+}
+
+.ratingValue {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xl);       /* 22px */
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+/* ── Middle section: Guest favourite text ─────────────────── */
+.middleSection {
+  flex: 1;
+  min-width: 0;
+}
+
+.favouriteLabel {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);       /* 12px */
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin: 0 0 var(--space-2);
+}
+
+.favouriteDesc {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);       /* 11px */
+  font-weight: var(--font-weight-normal);
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ── Vertical divider ─────────────────────────────────────── */
+.divider {
+  width: 1px;
+  height: 44px;
+  background: var(--border-default);
+  flex-shrink: 0;
+}
+
+/* ── Right section: review count ──────────────────────────── */
+.reviewSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--space-2);
+  text-align: center;
+  min-width: 80px;
+}
+
+.reviewCount {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xl);       /* 22px */
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  line-height: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.reviewLabel {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);       /* 11px */
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-normal);
+  line-height: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Host row
+   ───────────────────────────────────────────────────────────── */
+.hostRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-4) var(--space-6);
+  margin-left: calc(-1 * var(--space-6));
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  color: inherit;
+  /* Hover highlight on the host link */
+  transition: background-color var(--transition-fast);
+  width: fit-content;
+}
+
+.hostRow:hover {
+  background-color: var(--bg-hover);
+}
+
+.hostRow:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hostRow {
+    transition: none;
+  }
+}
+
+/* ── Host avatar ──────────────────────────────────────────── */
+.avatarWrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--border-radius-pill);
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  background: var(--color-grey-100);
+}
+
+/* Superhost badge — small red circle bottom-right of avatar */
+.superhostBadge {
+  position: absolute;
+  bottom: 0;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  background: var(--color-brand);
+  border-radius: var(--border-radius-pill);
+  border: 2px solid var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.superhostIcon {
+  width: 10px;
+  height: 10px;
+  color: var(--color-white);
+}
+
+/* ── Host text ────────────────────────────────────────────── */
+.hostInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.hostedBy {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.hostMeta {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--text-secondary);
+  line-height: 1.3;
+}

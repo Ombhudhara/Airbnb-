@@ -1,0 +1,213 @@
+/* =============================================================
+   Gallery.module.css
+   Photo hero grid — 1 large tile left + 2×2 right
+   All values via tokens from src/styles/tokens.css
+   ============================================================= */
+
+/* ── Outer wrapper ────────────────────────────────────────── */
+.gallery {
+  position: relative;
+  width: 100%;
+  /* Fluid height based on viewport width, keeping aspect ratio beautiful */
+  height: clamp(300px, 45vw, 480px);
+  border-radius: var(--gallery-radius);
+  overflow: hidden;         /* clips inner corners & hover scale */
+  margin-bottom: var(--space-32);
+  /* Subtle entrance animation */
+  animation: galleryFadeIn 400ms ease both;
+}
+
+@keyframes galleryFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery { animation: none; }
+}
+
+@media (max-width: 744px) {
+  .gallery {
+    height: 60vw; /* Mobile aspect ratio 16:9ish */
+    margin-bottom: var(--space-24);
+    border-radius: 0; /* Bleed edge-to-edge on mobile */
+    margin-left: calc(-1 * var(--navbar-padding-x));
+    margin-right: calc(-1 * var(--navbar-padding-x));
+    width: calc(100% + var(--navbar-padding-x) * 2);
+  }
+}
+
+/* ── CSS Grid ─────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  /* Hero = 50%, right two cols = 25% each → 5 photo Airbnb layout */
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--gallery-gap);
+  height: 100%;
+}
+
+@media (max-width: 744px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+
+/* ── Hero tile (large left, spans both rows) ──────────────── */
+.heroTile {
+  grid-row: 1 / 3;      /* span both rows */
+  grid-column: 1 / 2;   /* first column only — 2fr wide */
+}
+
+@media (max-width: 744px) {
+  .heroTile {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+  }
+  
+  /* Hide the other 4 photos on mobile */
+  .grid > *:not(.heroTile) {
+    display: none;
+  }
+}
+
+/* ── Right tiles (2×2) ────────────────────────────────────── */
+.tile {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  /* No individual border-radius — outer .gallery clips corners */
+  background: var(--color-grey-100);
+  width: 100%;
+  height: 100%;
+}
+
+/* Keyboard focus wrapper — needs to be a button */
+.tileBtn {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.tileBtn:focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: -3px;
+  z-index: 2;
+}
+
+/* ── Image inside tile ────────────────────────────────────── */
+.img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* Scale transition on hover */
+  transition:
+    transform 200ms ease,
+    filter 200ms ease;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* ── Hover overlay darken ─────────────────────────────────── */
+.tileBtn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gallery-overlay);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tileBtn:hover .img,
+.tileBtn:focus-visible .img {
+  transform: scale(var(--gallery-scale-hover));
+}
+
+.tileBtn:hover::after,
+.tileBtn:focus-visible::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img { transition: none; }
+  .tileBtn::after { transition: none; }
+}
+
+/* ── "Show all photos" pill button ───────────────────────── */
+/* Positioned absolutely over the bottom-right of the last tile */
+.showAllWrap {
+  position: absolute;
+  bottom: var(--space-16);
+  right: var(--space-16);
+  z-index: 10;
+}
+
+.showAllBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-16);
+  background: var(--color-white);
+  border: 1.5px solid var(--color-grey-800);
+  border-radius: var(--border-radius-pill);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: var(--shadow-btn);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    background-color 150ms ease;
+}
+
+.showAllBtn:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-btn-hover);
+  background-color: var(--color-grey-50);
+}
+
+.showAllBtn:active {
+  transform: scale(0.98);
+}
+
+.showAllBtn:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showAllBtn {
+    transition: none;
+    transform: none !important;
+  }
+}
+
+/* ── Grid icon inside the pill button ────────────────────── */
+.gridIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Outer corner radius on specific tiles via clip ──────── */
+/*
+   The .gallery wrapper clips all children with border-radius.
+   These selectors refine individual tile corners so the 4
+   outer corners of the 5-tile cluster are rounded correctly
+   when gap is present (the outer .gallery border-radius handles it).
+*/
+.heroTile { border-radius: 0; }  /* clipped by parent */

@@ -1,0 +1,21 @@
+/* Listing page layout */
+.page {
+  min-height: 100vh;
+  background: var(--bg-page);
+  font-family: var(--font-family);
+}
+
+.main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--navbar-padding-x);
+}
+
+/* Full-width zone: Reviews, Location, Host, etc.
+   Must match the ListingLayout's max-width + padding for visual alignment */
+.fullWidthZone {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-24); /* matches ListingLayout's inner padding */
+  width: 100%;
+}

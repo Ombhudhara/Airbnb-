@@ -1,0 +1,92 @@
+/* =============================================================
+   Modal.module.css
+   ============================================================= */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms ease, visibility 300ms ease;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: var(--color-white);
+  width: 100%;
+  max-width: 780px;
+  max-height: 90vh;
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+  
+  transform: translateY(40px);
+  transition: transform 300ms cubic-bezier(0.2, 0, 0, 1); /* smooth slide up */
+}
+
+.visible .modal {
+  transform: translateY(0);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: var(--space-24) var(--space-24) var(--space-16) var(--space-24);
+  min-height: 64px;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background-color 150ms ease;
+}
+
+.closeBtn:hover {
+  background-color: var(--color-grey-50);
+}
+
+.closeBtn:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+.closeBtn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.content {
+  padding: 0 var(--space-24) var(--space-24) var(--space-24);
+  overflow-y: auto;
+  flex: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .modal {
+    transition: none;
+    transform: none;
+  }
+}

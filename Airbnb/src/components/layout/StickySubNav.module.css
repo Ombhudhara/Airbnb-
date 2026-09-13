@@ -1,0 +1,231 @@
+/* =============================================================
+   StickySubNav.module.css
+   Sticky sub-navigation bar: tabs left, price+reserve right.
+   All values via tokens from src/styles/tokens.css.
+   ============================================================= */
+
+/* ── Bar wrapper ──────────────────────────────────────────── */
+.bar {
+  position: fixed;
+  top: var(--subnav-top);
+  left: 0;
+  right: 0;
+  z-index: var(--subnav-z);
+  background: var(--color-white);
+  border-bottom: 1px solid var(--border-default);
+  height: var(--subnav-height);
+  display: flex;
+  align-items: center;
+
+  /* Entry animation — slide down from -8px + fade in */
+  animation: subnavEnter var(--subnav-enter-duration) ease both;
+
+  /* Shadow only visible when sticky */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+@keyframes subnavEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    animation: none;
+  }
+}
+
+/* Hidden state — not sticky yet, removed from layout */
+.hidden {
+  display: none;
+}
+
+/* ── Inner layout ─────────────────────────────────────────── */
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--navbar-padding-x);
+  height: 100%;
+}
+
+/* ── Tabs side ────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  gap: 0;
+  position: relative;
+}
+
+/* ── Single tab button ────────────────────────────────────── */
+.tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 var(--space-20);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast);
+  border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+  outline-offset: -2px;
+}
+
+.tab:first-child {
+  padding-left: 0;
+}
+
+.tab:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-hover);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab {
+    transition: none;
+  }
+}
+
+/* Active tab */
+.tabActive {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ── Sliding underline indicator ──────────────────────────── */
+/*
+   Implemented as an absolutely-positioned element at the bottom
+   of .tabs. Its left + width are driven by JS inline styles
+   so the sliding transition is smooth across all tabs.
+*/
+.indicator {
+  position: absolute;
+  bottom: 0;
+  height: var(--subnav-tab-underline);
+  background: var(--color-black);
+  border-radius: 2px 2px 0 0;
+  transition: var(--tab-underline-transition);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator {
+    transition: none;
+  }
+}
+
+/* ── Right-side: price summary + Reserve button ───────────── */
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  flex-shrink: 0;
+}
+
+/* Price block — stacked two lines */
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+
+.priceMain {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  line-height: 1.2;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  box-shadow: none;
+}
+
+.priceMeta {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--text-secondary);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.starIcon {
+  margin-right: 2px;
+}
+
+/* ── Reserve CTA pill button ──────────────────────────────── */
+.reserveBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-10) var(--space-20);
+  border-radius: var(--border-radius-pill);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  background: var(--reserve-gradient);
+  background-size: 200% 100%;
+  background-position: left center;
+  white-space: nowrap;
+  transition:
+    background-position 200ms ease,
+    transform 150ms ease,
+    box-shadow 200ms ease;
+  box-shadow: 0 4px 12px rgba(230, 30, 77, 0.35);
+}
+
+.reserveBtn:hover {
+  background-position: right center;
+  background: var(--reserve-gradient-hover);
+  box-shadow: 0 6px 16px rgba(230, 30, 77, 0.45);
+  transform: translateY(-1px);
+}
+
+.reserveBtn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.reserveBtn:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reserveBtn {
+    transition: none;
+    transform: none !important;
+  }
+}

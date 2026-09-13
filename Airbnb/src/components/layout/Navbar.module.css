@@ -1,0 +1,313 @@
+/* =============================================================
+   Navbar.module.css
+   All values use tokens from src/styles/tokens.css
+   ============================================================= */
+
+/* ── Root navbar wrapper ──────────────────────────────────── */
+.navbar {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  background: var(--bg-page);
+  box-shadow: var(--shadow-navbar);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--navbar-height);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--navbar-padding-x);
+  gap: var(--space-16);
+}
+
+/* ── Logo ─────────────────────────────────────────────────── */
+.logoLink {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  color: var(--color-brand);
+  border-radius: var(--border-radius-sm);
+  padding: var(--space-4);
+  transition: opacity var(--transition-fast);
+}
+
+.logoLink:hover {
+  opacity: 0.85;
+}
+
+.logoLink:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+.logoSvg {
+  width: 102px;
+  height: 32px;
+}
+
+/* ── Search Pill ──────────────────────────────────────────── */
+.searchPill {
+  display: flex;
+  align-items: center;
+  background: var(--bg-pill);
+  border: 1px solid var(--border-default);
+  border-radius: var(--border-radius-pill);
+  box-shadow: var(--shadow-pill);
+  transition:
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+  flex-shrink: 0;
+}
+
+.searchPill:hover {
+  box-shadow: var(--shadow-pill-hover);
+  border-color: var(--color-grey-100);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .searchPill {
+    transition: none;
+  }
+}
+
+/* Individual segment buttons */
+.segment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--space-8) var(--space-20);
+  background: transparent;
+  border: none;
+  border-radius: var(--border-radius-pill);
+  cursor: pointer;
+  height: 44px;
+  white-space: nowrap;
+  position: relative;
+  transition: background-color var(--transition-fast);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+}
+
+.segment:hover {
+  background-color: var(--bg-hover);
+}
+
+.segment:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .segment {
+    transition: none;
+  }
+}
+
+/* Divider between segments */
+.divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border-default);
+  flex-shrink: 0;
+}
+
+.segmentLabel {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  letter-spacing: 0.1px;
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.segmentValue {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-normal);
+  line-height: 1;
+}
+
+/* Guests segment extra — flex row to fit search button */
+.guestsRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding-right: var(--space-8);
+}
+
+.guestsText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ── Search submit button ─────────────────────────────────── */
+.searchBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--search-btn-size);
+  height: var(--search-btn-size);
+  border-radius: var(--border-radius-pill);
+  background: var(--color-brand);
+  border: none;
+  cursor: pointer;
+  color: var(--color-white);
+  flex-shrink: 0;
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.searchBtn:hover {
+  background: var(--color-brand-dark);
+  transform: scale(1.04);
+}
+
+.searchBtn:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+.searchBtn:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .searchBtn {
+    transition: none;
+    transform: none !important;
+  }
+}
+
+/* ── Right actions ────────────────────────────────────────── */
+.rightActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-shrink: 0;
+}
+
+/* "Become a host" link */
+.hostLink {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--border-radius-pill);
+  transition: background-color var(--transition-fast);
+  white-space: nowrap;
+  font-family: var(--font-family);
+}
+
+.hostLink:hover {
+  background-color: var(--bg-hover);
+}
+
+.hostLink:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hostLink {
+    transition: none;
+  }
+}
+
+/* Globe / icon-only buttons */
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-pill);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background-color var(--transition-fast);
+}
+
+.iconBtn:hover {
+  background-color: var(--bg-hover);
+}
+
+.iconBtn:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iconBtn {
+    transition: none;
+  }
+}
+
+/* ── User menu button (hamburger + avatar) ────────────────── */
+.userMenuBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-6) var(--space-6) var(--space-6) var(--space-10);
+  border: 1px solid var(--border-default);
+  border-radius: var(--border-radius-pill);
+  background: var(--color-white);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+  font-family: var(--font-family);
+}
+
+.userMenuBtn:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+.userMenuBtn:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .userMenuBtn {
+    transition: none;
+  }
+}
+
+.hamburger {
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+}
+
+/* Avatar circle */
+.avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: var(--border-radius-pill);
+  background: var(--color-grey-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatar svg {
+  width: 20px;
+  height: 20px;
+  color: var(--color-white);
+}

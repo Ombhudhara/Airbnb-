@@ -1,0 +1,298 @@
+/* Promo Banner */
+.promoBanner {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-grey-200);
+  border-radius: 12px;
+  padding: var(--space-16) var(--space-24);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-family: var(--font-family);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-24);
+}
+
+.promoText {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-16);
+}
+
+.promoIcon {
+  width: 24px;
+  height: 24px;
+  color: #2e7d32; /* Green color for the tag */
+  margin-top: 2px;
+}
+
+.promoTitle {
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  font-size: var(--font-size-md);
+  margin-bottom: 2px;
+}
+
+.promoLink {
+  color: var(--text-primary);
+  text-decoration: underline;
+  font-size: var(--font-size-sm);
+}
+
+.promoBtn {
+  background-color: var(--color-grey-100);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-bold);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.promoBtn:hover {
+  background-color: var(--color-grey-200);
+}
+
+.sidebarCard {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-grey-200);
+  border-radius: 12px;
+  padding: var(--space-24);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  font-family: var(--font-family);
+}
+
+.priceHeader {
+  margin-bottom: var(--space-24);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+}
+
+.priceAmount {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+.priceSubtext {
+  font-size: var(--font-size-md);
+  color: var(--text-primary);
+}
+
+/* Form Container */
+.formGrid {
+  border: 1px solid var(--color-grey-400);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: var(--space-16);
+}
+
+.datesRow {
+  display: flex;
+  border-bottom: 1px solid var(--color-grey-400);
+}
+
+.dateField {
+  flex: 1;
+  padding: 10px var(--space-12);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+  border-radius: 8px 0 0 0;
+  transition: background-color 0.15s;
+}
+
+.dateField:hover, .guestsRow:hover {
+  background-color: var(--color-grey-100);
+}
+
+.dateField.checkIn {
+  border-right: 1px solid var(--color-grey-400);
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.value {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+.value.placeholder {
+  color: var(--color-grey-500);
+}
+
+.guestsRow {
+  padding: 10px var(--space-12);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  cursor: pointer;
+}
+
+.guestsChevron {
+  position: absolute;
+  right: var(--space-16);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--text-primary);
+}
+
+/* Guest Popup */
+.guestPopup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-white);
+  border: 1px solid var(--color-grey-300);
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  padding: var(--space-16);
+  z-index: 10;
+  margin-top: -1px;
+}
+
+.guestRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.guestInfo h4 {
+  margin: 0 0 4px 0;
+  font-size: var(--font-size-md);
+  color: var(--text-primary);
+}
+
+.guestInfo p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.guestControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.circleBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-grey-400);
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.circleBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.circleBtn:not(:disabled):hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+.guestCount {
+  font-weight: var(--font-weight-regular);
+  width: 16px;
+  text-align: center;
+}
+
+/* Banner */
+.cancellationBanner {
+  background-color: var(--color-grey-100);
+  border-radius: 8px;
+  padding: var(--space-12) var(--space-16);
+  text-align: center;
+  margin-bottom: var(--space-16);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.cancellationBanner span {
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+/* CTA */
+.reserveBtn {
+  width: 100%;
+  background: var(--reserve-gradient, linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%));
+  color: var(--color-white);
+  border: none;
+  border-radius: 9999px;
+  padding: 14px 24px;
+  font-size: var(--font-size-base, 16px);
+  font-weight: var(--font-weight-bold, 700);
+  font-family: inherit;
+  cursor: pointer;
+  margin-bottom: var(--space-16);
+  transition: opacity 200ms ease, transform 150ms ease, box-shadow 200ms ease;
+  box-shadow: 0 4px 12px rgba(230, 30, 77, 0.25);
+  display: block;
+  text-align: center;
+}
+
+.reserveBtn:hover {
+  opacity: 0.95;
+  box-shadow: 0 6px 16px rgba(230, 30, 77, 0.35);
+  transform: translateY(-1px);
+}
+
+.reserveBtn:active {
+  transform: scale(0.98);
+}
+
+.chargeNotice {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Footer Link */
+.reportContainer {
+  margin-top: var(--space-24);
+  text-align: center;
+}
+
+.reportLink {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-decoration: underline;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  transition: color 150ms ease;
+}
+
+.reportLink:hover {
+  color: var(--text-primary);
+}
+
+.flagIcon {
+  width: 14px;
+  height: 14px;
+}

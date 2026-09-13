@@ -1,0 +1,144 @@
+/* =============================================================
+   ReviewsGrid.module.css
+   ============================================================= */
+
+.section {
+  padding: 0 0 var(--space-48) 0;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-48);
+  margin-bottom: var(--space-48);
+}
+
+/* ── Review Card ── */
+.reviewCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--color-grey-200);
+}
+
+.avatarInitials {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-grey-800);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.authorName {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.memberSince {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+}
+
+.starsRow {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.starIcon {
+  width: 12px;
+  height: 12px;
+  color: var(--text-primary);
+}
+
+/* ── Buttons ── */
+.showAllBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 23px;
+  border: 1px solid var(--text-primary);
+  border-radius: var(--border-radius-md);
+  background: var(--color-white);
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.showAllBtn:hover {
+  background-color: var(--color-grey-50);
+}
+
+.showAllBtn:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+/* ── Modal Content ── */
+.modalHeader {
+  position: sticky;
+  top: 0;
+  background: var(--color-white);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding: 0 0 var(--space-24) 0;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.modalTitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.modalContent {
+  padding: var(--space-24) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+}

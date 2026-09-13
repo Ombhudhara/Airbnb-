@@ -1,0 +1,123 @@
+/* ============================================================
+   Airbnb Design Tokens
+   All values consumed via var(--token-name) — no magic numbers.
+   ============================================================ */
+
+:root {
+  /* ── Brand ─────────────────────────────────────────────── */
+  --color-brand:        #FF385C;
+  --color-brand-dark:   #E31C5F;
+
+  /* ── Neutrals ───────────────────────────────────────────── */
+  --color-white:        #FFFFFF;
+  --color-black:        #000000;
+  --color-grey-50:      #F7F7F7;
+  --color-grey-100:     #EBEBEB;
+  --color-grey-200:     #DDDDDD;
+  --color-grey-400:     #717171;
+  --color-grey-600:     #484848;
+  --color-grey-800:     #222222;
+
+  /* ── Text ───────────────────────────────────────────────── */
+  --text-primary:       var(--color-grey-800);
+  --text-secondary:     var(--color-grey-400);
+  --text-on-brand:      var(--color-white);
+
+  /* ── Backgrounds ────────────────────────────────────────── */
+  --bg-page:            var(--color-white);
+  --bg-hover:           var(--color-grey-50);
+  --bg-pill:            var(--color-white);
+
+  /* ── Border ─────────────────────────────────────────────── */
+  --border-default:     var(--color-grey-200);
+  --border-radius-sm:   8px;
+  --border-radius-md:   12px;
+  --border-radius-lg:   24px;
+  --border-radius-pill: 9999px;
+
+  /* ── Shadows ────────────────────────────────────────────── */
+  --shadow-pill:
+    0 1px 2px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-pill-hover:
+    0 2px 4px rgba(0, 0, 0, 0.18),
+    0 8px 16px rgba(0, 0, 0, 0.12);
+  --shadow-navbar:      0 1px 0 rgba(0, 0, 0, 0.08);
+
+  /* ── Spacing ────────────────────────────────────────────── */
+  --space-2:   2px;
+  --space-4:   4px;
+  --space-6:   6px;
+  --space-8:   8px;
+  --space-10:  10px;
+  --space-12:  12px;
+  --space-16:  16px;
+  --space-20:  20px;
+  --space-24:  24px;
+  --space-32:  32px;
+  --space-40:  40px;
+  --space-48:  48px;
+  --space-64:  64px;
+
+  /* ── Icon sizes ─────────────────────────────────────────── */
+  --icon-sm:   16px;
+  --icon-md:   18px;
+  --icon-lg:   20px;
+
+  /* ── Typography ─────────────────────────────────────────── */
+  --font-family: 'Circular', 'Airbnb Cereal App', -apple-system,
+                 BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+                 Arial, sans-serif;
+  --font-size-xs:    11px;
+  --font-size-sm:    12px;
+  --font-size-base:  14px;
+  --font-size-md:    16px;
+  --font-size-lg:    18px;
+  --font-size-xl:    22px;
+  --font-size-title: 26px;
+  --font-weight-normal:   400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+
+  /* ── Underline animation ─────────────────────────────────── */
+  --transition-underline: width 200ms ease-out;
+
+  /* ── Heart animation ─────────────────────────────────────── */
+  --transition-heart: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Transitions ────────────────────────────────────────── */
+  --transition-fast:   150ms ease;
+  --transition-base:   200ms ease;
+  --transition-slow:   300ms ease;
+
+  /* ── Navbar ─────────────────────────────────────────────── */
+  --navbar-height:     80px;
+  --navbar-padding-x:  var(--space-24);
+  --avatar-size:       32px;
+  --search-btn-size:   34px;
+
+  /* ── Gallery ─────────────────────────────────────────────── */
+  --gallery-gap:          6px;
+  --gallery-radius:       12px;
+  --gallery-height:       480px;
+  --gallery-overlay:      rgba(0, 0, 0, 0.28);
+  --gallery-scale-hover:  1.02;
+  --shadow-btn:
+    0 2px 4px rgba(0, 0, 0, 0.14),
+    0 4px 8px rgba(0, 0, 0, 0.10);
+  --shadow-btn-hover:
+    0 4px 8px rgba(0, 0, 0, 0.20),
+    0 8px 16px rgba(0, 0, 0, 0.16);
+
+  /* ── Sticky Sub-Nav ──────────────────────────────────────── */
+  --subnav-height:         80px;
+  --subnav-tab-underline:  2px;
+  --subnav-enter-duration: 300ms;
+  --subnav-top:            0px; /* Pins to top of viewport, replacing main navbar */
+  --subnav-z:              90;
+  --reserve-gradient:      linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+  --reserve-gradient-hover:linear-gradient(to right, #D70466 0%, #C8125A 50%, #BD1E59 100%);
+  --tab-underline-transition: left 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                              width 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}

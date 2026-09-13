@@ -1,0 +1,26 @@
+.page {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-white, #ffffff);
+  z-index: 999;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  animation: slideUp var(--transition-medium, 300ms ease) forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.content {
+  padding-top: 80px; /* space for header */
+  padding-bottom: 80px;
+}
